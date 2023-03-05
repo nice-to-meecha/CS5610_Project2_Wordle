@@ -6,3 +6,7 @@ A recreation of Wordle -- no daily limits!
 - Given more time, what additional features, functional or design changes would you make
 - What assumptions did you make while working on this assignment?
 - How long did this assignment take to complete?
+
+### Resources
+- Adding routes for multiple pages
+    - https://isotropic.co/react-multiple-pages/
