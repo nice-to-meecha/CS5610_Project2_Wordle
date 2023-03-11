@@ -25,8 +25,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             element={<Rules />}
           />
           <Route
-            path='game'
-            element={<Game />}
+            path='game/normal'
+            element={<Game difficulty='normal'/>}
+          />
+          <Route
+            path='game/hard'
+            element={<Game difficulty='hard'/>}
           />
           <Route
             path='*'
