@@ -17,3 +17,6 @@ A recreation of Wordle -- no daily limits!
 - Explanation for rendering twice, even without useState
     - https://stackoverflow.com/questions/48846289/why-is-my-react-component-is-rendering-twice
     - https://reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects
+- useEffect()
+    - https://beta.reactjs.org/reference/react/useEffect#examples-dependencies
+    - https://css-tricks.com/run-useeffect-only-once/
