@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Guess from "./Guess";
 import normalWords from "../data/normal_words.txt";
 import hardWords from "../data/hard_words.txt";
 import "../css/Game.css";
@@ -129,6 +130,7 @@ function Game(props) {
         >
             Submit
         </button>
+        <Guess wordLength={wordLength} />
         </div>);
 }
 

@@ -20,3 +20,11 @@ A recreation of Wordle -- no daily limits!
 - useEffect()
     - https://beta.reactjs.org/reference/react/useEffect#examples-dependencies
     - https://css-tricks.com/run-useeffect-only-once/
+- How to refocus an input form
+    - https://stackoverflow.com/questions/26790990/html-input-always-in-focus#:~:text=Basically%2C%20you%20add%20a%20blur,start%20off%20focused%20as%20well.
+- Getting rid of input focus border/background
+    - https://stackoverflow.com/questions/3397113/how-to-remove-focus-border-outline-around-text-input-boxes-chrome
+- Letter spacing
+    - https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing
+- Merriweather font style
+    - https://fonts.google.com/specimen/Merriweather#styles

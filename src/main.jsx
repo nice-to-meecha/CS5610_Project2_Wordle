@@ -7,6 +7,7 @@ import Rules from './pages/Rules';
 import Game from './pages/Game';
 import Unknown from './pages/Unknown';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
+import "./css/Global.css";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
