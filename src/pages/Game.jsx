@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import Guess from "./Guess";
+import Board from "./Board"
 import { gameContext } from "./GameContext";
 import "../css/Game.css";
 
@@ -102,11 +102,10 @@ function Game(props) {
         <div>Please select a {wordLength}-letter word:</div>
         <h4>The word is {word}</h4>
         <div>Remaining attempts: {numGuesses - attempts}</div>
-        <Guess
-            wordLength={wordLength}
-            checkAttempt={checkAttempt}
-            difficulty={difficulty}
+        <Board
             attempts={attempts}
+            difficulty={difficulty}
+            wordLength={wordLength}
         />
         <button
             onClick={checkAttempt}
