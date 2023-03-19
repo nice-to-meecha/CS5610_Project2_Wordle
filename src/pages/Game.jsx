@@ -94,7 +94,6 @@ function Game(props) {
             return false;
         }
 
-        alert(`Valid-ish guess: ${guess}`)
         return true;
     }
      
