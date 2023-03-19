@@ -1,31 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { gameContext } from "./GameContext";
 import "../css/Guess.css";
 
 function Guess(props) {
     const { wordLength } = props;
-    const [guess, setGuess] = useState("");
-    const boxes = createBoxBackground(wordLength);
+    const { setGuess } = useContext(gameContext);
+    const [localGuessArr, setLocalGuessArr] = 
+        useState(Array.from({ length: wordLength }, (ele) => ''));
+
+    function autoAdvance(event) {
+        event.target.value = (event.target.value || "").toUpperCase();
+        if (!event.target.value && event.target.previousElementSibling) {
+            event.target.previousElementSibling.focus();
+        } else if ((event.target.value && event.target.nextElementSibling)) {
+            event.target.nextElementSibling.focus();
+        }
+
+        const inputIndex = event.target.id.match(/\d$/)[0];
+        localGuessArr[inputIndex] = event.target.value;
+        setLocalGuessArr([...localGuessArr]);
+        setGuess(localGuessArr.join(''));
+    }
+
+    function createWordInputs(wordLength) {
+        const inputs = [];
+        for (let i = 0; i < wordLength; i++) {
+            inputs.push(
+            <input
+                className="letter-box"
+                onChange={autoAdvance}
+                maxLength={1}
+                key={i}
+                id={`letter-box-${i}`}
+            />)
+        }
+        return inputs;
+    }
+
+    const inputs = createWordInputs(wordLength);
 
     return (<div className="guess-background">
-        {boxes}
-        <input
-            className="guess-input"
-            autoFocus={true}
-            onChange={allCaps}
-        />
+        {inputs}
     </div>);
-}
-
-function allCaps(event) {
-    event.target.value = (event.target.value || "").toUpperCase();
-}
-
-function createBoxBackground(wordLength) {
-    const boxes = [];
-    for (let i = 0; i < wordLength; i++) {
-        boxes.push(<div className="letter-box" />)
-    }
-    return boxes;
 }
 
 export default Guess;

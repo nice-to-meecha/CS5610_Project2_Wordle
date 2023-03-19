@@ -28,3 +28,5 @@ A recreation of Wordle -- no daily limits!
     - https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing
 - Merriweather font style
     - https://fonts.google.com/specimen/Merriweather#styles
+- Autocapitalize input
+    - https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize

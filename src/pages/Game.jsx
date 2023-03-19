@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from "react";
 import Guess from "./Guess";
-import normalWords from "../data/normal_words.txt";
-import hardWords from "../data/hard_words.txt";
+import { gameContext } from "./GameContext";
 import "../css/Game.css";
 
 /*
@@ -36,29 +35,14 @@ import "../css/Game.css";
         7. The game shows “Congratulations!  Would you like to try again?
 */
 
-const difficultyValues = {
-    normal: {
-        numGuesses: 6,
-        wordLength: 6,
-        wordList: normalWords,
-    },
-
-    hard: {
-        numGuesses: 5,
-        wordLength: 7,
-        wordList: hardWords,
-    },
-};
-
 function Game(props) {
     const { difficulty } = props;
-    console.log(difficulty);
-    const { numGuesses, wordList, wordLength } = difficultyValues[difficulty];
+    const globalValues = useContext(gameContext);
+    const { guess } = globalValues;
+    const { numGuesses, wordList, wordLength } = globalValues.difficultyValues[difficulty];
 
     const [ word, setWord ] = useState("");
-    const [ board, setBoard ] = useState([]);
     const [ attempts, setAttempts ] = useState(0);
-    const [ currGuess, setCurrGuess ] = useState("");
     
     useEffect(() => {
         async function selectWord() {
@@ -75,46 +59,42 @@ function Game(props) {
         selectWord();
     }, [])
     
-    useEffect(() => {
-        function createBoard() {
-            const wordGuesses = [];
-            for (let i = 0; i < numGuesses; i++) {
-                wordGuesses.push((<div key={i}>
-                    <input
-                        id={`guess${i + 1}`}
-                        disabled={attempts !== i}
-                        onChange={updateCurrGuess} />
-                </div>));
-            }
+    // useEffect(() => {
+    //     function createBoard() {
+    //         const wordGuesses = [];
+    //         for (let i = 0; i < numGuesses; i++) {
+    //             wordGuesses.push((<div key={i}>
+    //                 <input
+    //                     id={`guess${i + 1}`}
+    //                     disabled={attempts !== i}
+    //                     onChange={updateCurrGuess} />
+    //             </div>));
+    //         }
         
-            setBoard(wordGuesses);
-            console.log(board);
-        }
+    //         setBoard(wordGuesses);
+    //         console.log(board);
+    //     }
     
-        createBoard();
-    }, [attempts])
+    //     createBoard();
+    // }, [attempts])
 
     function checkAttempt() {
         if (attempts < numGuesses) {
             if (!validAttempt()) {
                 return;
             }
-            const currentGuess = board[attempts];
-            console.log(currentGuess);
+
             setAttempts(attempts + 1);
         }
     }
 
-    function updateCurrGuess(event) {
-        setCurrGuess(event.target.value);
-    }
-
     function validAttempt() {
-        if (currGuess.length !== wordLength) {
-            alert(`Try a ${currGuess.length < wordLength ? "longer" : "shorter"} word!`);
+        if (guess.length !== wordLength) {
+            alert(`Try a ${guess.length < wordLength ? "longer" : "shorter"} word!`);
             return false;
         }
 
+        alert(`Valid-ish guess: ${guess}`)
         return true;
     }
      
@@ -123,15 +103,20 @@ function Game(props) {
         <div>Please select a {wordLength}-letter word:</div>
         <h4>The word is {word}</h4>
         <div>Remaining attempts: {numGuesses - attempts}</div>
-        {board}
+        <Guess
+            wordLength={wordLength}
+            checkAttempt={checkAttempt}
+            difficulty={difficulty}
+            attempts={attempts}
+        />
         <button
             onClick={checkAttempt}
             disabled={numGuesses <= attempts}
         >
             Submit
         </button>
-        <Guess wordLength={wordLength} />
-        </div>);
+        {guess}
+    </div>);
 }
 
 export default Game;
