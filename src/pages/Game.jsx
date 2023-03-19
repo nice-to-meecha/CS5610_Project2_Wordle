@@ -58,25 +58,6 @@ function Game(props) {
 
         selectWord();
     }, [])
-    
-    // useEffect(() => {
-    //     function createBoard() {
-    //         const wordGuesses = [];
-    //         for (let i = 0; i < numGuesses; i++) {
-    //             wordGuesses.push((<div key={i}>
-    //                 <input
-    //                     id={`guess${i + 1}`}
-    //                     disabled={attempts !== i}
-    //                     onChange={updateCurrGuess} />
-    //             </div>));
-    //         }
-        
-    //         setBoard(wordGuesses);
-    //         console.log(board);
-    //     }
-    
-    //     createBoard();
-    // }, [attempts])
 
     function checkAttempt() {
         if (attempts < numGuesses) {

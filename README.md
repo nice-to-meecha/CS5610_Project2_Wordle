@@ -30,3 +30,5 @@ A recreation of Wordle -- no daily limits!
     - https://fonts.google.com/specimen/Merriweather#styles
 - Autocapitalize input
     - https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize
+- Modifying existing React elements with cloneElement()
+    - https://www.educative.io/answers/what-is-the-react-cloneelement-function

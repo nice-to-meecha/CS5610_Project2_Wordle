@@ -6,21 +6,27 @@ function Board(props) {
     const { attempts, difficulty, wordLength } = props;
     const globalValues = useContext(gameContext);
     const { numGuesses } = globalValues.difficultyValues[difficulty];
-    const [ guessInputs, setGuessInputs ] = useState([]);
+    const [guessInputs, setGuessInputs] = useState([]);
 
     useEffect(() => {
         if (guessInputs.length < attempts + 1 && attempts < numGuesses) {
-            guessInputs.push(<Guess
-                wordLength={wordLength}
-                key={attempts}
-            />);
-            setGuessInputs([...guessInputs]);
+            setGuessInputs([
+                ...guessInputs.slice(0, -1),
+                ...(guessInputs.slice(-1).length
+                    ? [React.cloneElement(...guessInputs.slice(-1), { active: false })]
+                    : []
+                ),
+                (<Guess
+                    active={true}
+                    wordLength={wordLength}
+                    key={attempts}
+                />),
+            ]);
         }
     }, [attempts])
 
     return(<div>
         {guessInputs}
-        {attempts}
     </div>)
 }
 
