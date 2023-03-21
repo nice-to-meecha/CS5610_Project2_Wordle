@@ -6,6 +6,18 @@
     height: 100%;
 }
 
+.green-letter-box {
+    background-color: green;
+}
+
+.gray-letter-box {
+    background-color: gray;
+}
+
+.yellow-letter-box {
+    background-color: yellow;
+}
+
 .guess-background {
     position: relative;
     display: flex;

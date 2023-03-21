@@ -38,10 +38,8 @@ import "../css/Game.css";
 function Game(props) {
     const { difficulty } = props;
     const globalValues = useContext(gameContext);
-    const { guess } = globalValues;
+    const { guess, targetWord, setTargetWord } = globalValues;
     const { numGuesses, wordList, wordLength } = globalValues.difficultyValues[difficulty];
-
-    const [ word, setWord ] = useState("");
     const [ attempts, setAttempts ] = useState(0);
     
     useEffect(() => {
@@ -52,7 +50,7 @@ function Game(props) {
                     const words = data.split("\n").map(word => word.trim());
                     const i = Math.round(Math.random() * (words.length - 1));
                     console.log(words);
-                    setWord(words[i]);
+                    setTargetWord(words[i].toUpperCase());
                 });
         }
 
@@ -81,7 +79,7 @@ function Game(props) {
     return (<div>
         <h1>This is the {difficulty} game page!</h1>
         <div>Please select a {wordLength}-letter word:</div>
-        <h4>The word is {word}</h4>
+        <h4>The word is {targetWord}</h4>
         <div>Remaining attempts: {numGuesses - attempts}</div>
         <Board
             attempts={attempts}

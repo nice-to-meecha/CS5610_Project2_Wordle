@@ -6,6 +6,7 @@ export const gameContext = createContext();
 
 function GameContext(props) {
     const [guess, setGuess] = useState("");
+    const [inProgressGuess, setInProgressGuess] = useState([]);
     const [targetWord, setTargetWord] = useState("");
     const difficultyValues = {
         normal: {
@@ -24,6 +25,8 @@ function GameContext(props) {
     const globalValues = {
         guess,
         setGuess,
+        inProgressGuess,
+        setInProgressGuess,
         targetWord,
         setTargetWord,
         difficultyValues,
