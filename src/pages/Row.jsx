@@ -46,7 +46,6 @@ function Row(props) {
     function colorGuess() {
         // Determine correct and missing letters
         const colors = Array.from({ length: wordLength }, (_) => "gray");
-        // console.log("Gray colors", colors);
         const missingLetters = {};
         localGuessArr.forEach((letter, i) => {
             if (letter === targetWord[i]) {
@@ -56,19 +55,15 @@ function Row(props) {
             }
         })
 
-        console.log(missingLetters);
-
         if (!Object.keys(missingLetters).length) {
             // TODO - "Congrats!" event
         } else {
             colors.forEach((color, i) => {
-                // console.log(targetWord[i], missingLetters[targetWord[i]]);
                 if (color === "gray" && missingLetters[localGuessArr[i]]) {
                     missingLetters[localGuessArr[i]]--;
                     colors[i] = "yellow";
                 }
-            })
-            // console.log("Gray/Yellow/Green", colors);
+            });
         }
 
         return colors;

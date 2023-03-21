@@ -9,9 +9,7 @@ function Board(props) {
     const [guessInputs, setGuessInputs] = useState([]);
 
     useEffect(() => {
-        console.log("Attempt changed");
         if (guessInputs.length < attempts + 1 && attempts < numGuesses) {
-            console.log("Attempts < Guesses");
             setGuessInputs([
                 ...guessInputs.slice(0, -1),
                 ...(guessInputs.slice(-1).length
@@ -25,13 +23,8 @@ function Board(props) {
                 />),
             ]);
         } else if (attempts === numGuesses) {
-            console.log("Attempts === Guesses");
             setGuessInputs([
-                ...guessInputs.map(guess => React.cloneElement(guess), { active: false })
-            ]);
-
-            console.log([
-                ...guessInputs.map(guess => React.cloneElement(guess), { active: false })
+                ...guessInputs.map(guess => React.cloneElement(guess, { active: false }))
             ]);
         }
     }, [attempts])
