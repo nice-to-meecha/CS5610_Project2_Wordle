@@ -32,3 +32,5 @@ A recreation of Wordle -- no daily limits!
     - https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize
 - Modifying existing React elements with cloneElement()
     - https://www.educative.io/answers/what-is-the-react-cloneelement-function
+- Resetting the state of a component
+    - https://react.dev/learn/preserving-and-resetting-state

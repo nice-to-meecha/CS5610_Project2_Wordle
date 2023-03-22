@@ -41,39 +41,37 @@ function Game(props) {
     const { guess, targetWord, setTargetWord } = globalValues;
     const { numGuesses, wordList, wordLength } = globalValues.difficultyValues[difficulty];
     const [ attempts, setAttempts ] = useState(0);
+    const [ boardKey, setBoardKey ] = useState(true);
     
     useEffect(() => {
-        async function selectWord() {
-            fetch(wordList)
-                .then(response => response.text())
-                .then(data => {
-                    const words = data.split("\n").map(word => word.trim());
-                    const i = Math.round(Math.random() * (words.length - 1));
-                    console.log(words);
-                    setTargetWord(words[i].toUpperCase());
-                });
-        }
-
         selectWord();
     }, [])
 
-    function checkAttempt() {
-        if (attempts < numGuesses) {
-            if (!validAttempt()) {
-                return;
-            }
+    async function selectWord() {
+        fetch(wordList)
+            .then(response => response.text())
+            .then(data => {
+                const words = data.split("\n").map(word => word.trim());
+                const i = Math.round(Math.random() * (words.length - 1));
+                console.log(words);
+                setTargetWord(words[i].toUpperCase());
+            });
+    }
 
+    function checkAttempt() {
+        if (attempts < numGuesses && guess.length === wordLength) {
             setAttempts(attempts + 1);
+
+        } else {
+            alert(`Try a ${guess.length < wordLength ? "longer" : "shorter"} word!`);
+
         }
     }
 
-    function validAttempt() {
-        if (guess.length !== wordLength) {
-            alert(`Try a ${guess.length < wordLength ? "longer" : "shorter"} word!`);
-            return false;
-        }
-
-        return true;
+    function refresh() {
+        selectWord();
+        setAttempts(0);
+        setBoardKey(!boardKey);
     }
      
     return (<div>
@@ -85,12 +83,18 @@ function Game(props) {
             attempts={attempts}
             difficulty={difficulty}
             wordLength={wordLength}
+            key={boardKey}
         />
         <button
             onClick={checkAttempt}
             disabled={numGuesses <= attempts}
         >
             Submit
+        </button>
+        <button
+            onClick={refresh}
+        >
+            Refresh
         </button>
         {guess}
     </div>);

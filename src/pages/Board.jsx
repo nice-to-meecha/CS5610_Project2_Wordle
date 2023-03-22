@@ -9,6 +9,7 @@ function Board(props) {
     const [guessInputs, setGuessInputs] = useState([]);
 
     useEffect(() => {
+        console.log("Attempts changed");
         if (guessInputs.length < attempts + 1 && attempts < numGuesses) {
             setGuessInputs([
                 ...guessInputs.slice(0, -1),
