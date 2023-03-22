@@ -1,16 +1,20 @@
 import React, { useEffect, useState, useContext } from "react";
+import Congrats from "./Congrats";
 import { gameContext } from "./GameContext";
 import Guess from "./Row";
+import "../css/Board.css";
 
 function Board(props) {
     const { attempts, difficulty, wordLength } = props;
     const globalValues = useContext(gameContext);
+    const { gameWon } = globalValues;
     const { numGuesses } = globalValues.difficultyValues[difficulty];
     const [guessInputs, setGuessInputs] = useState([]);
 
     useEffect(() => {
-        console.log("Attempts changed");
-        if (guessInputs.length < attempts + 1 && attempts < numGuesses) {
+        if (!gameWon &&
+            guessInputs.length < attempts + 1 &&
+            attempts < numGuesses) {
             setGuessInputs([
                 ...guessInputs.slice(0, -1),
                 ...(guessInputs.slice(-1).length
@@ -23,15 +27,16 @@ function Board(props) {
                     key={attempts}
                 />),
             ]);
-        } else if (attempts === numGuesses) {
+        } else {
             setGuessInputs([
                 ...guessInputs.map(guess => React.cloneElement(guess, { active: false }))
             ]);
         }
     }, [attempts])
 
-    return(<div>
+    return(<div className="game-board">
         {guessInputs}
+        {gameWon && <Congrats />}
     </div>)
 }
 

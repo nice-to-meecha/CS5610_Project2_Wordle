@@ -5,9 +5,10 @@ import hardWords from "../data/hard_words.txt";
 export const gameContext = createContext();
 
 function GameContext(props) {
-    const [guess, setGuess] = useState("");
-    const [inProgressGuess, setInProgressGuess] = useState([]);
-    const [targetWord, setTargetWord] = useState("");
+    const [ guess, setGuess ] = useState("");
+    const [ inProgressGuess, setInProgressGuess ] = useState([]);
+    const [ targetWord, setTargetWord ] = useState("");
+    const [ gameWon, setGameWon ] = useState(false);
     const difficultyValues = {
         normal: {
             numGuesses: 6,
@@ -29,6 +30,8 @@ function GameContext(props) {
         setInProgressGuess,
         targetWord,
         setTargetWord,
+        gameWon,
+        setGameWon,
         difficultyValues,
     };
 

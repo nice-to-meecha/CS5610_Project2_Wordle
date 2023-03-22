@@ -5,7 +5,7 @@ import "../css/Letter.css";
 
 function Row(props) {
     const { active, wordLength } = props;
-    const { guess, setGuess, targetWord } = useContext(gameContext);
+    const { guess, setGuess, targetWord, setGameWon } = useContext(gameContext);
     const [localGuessArr, setLocalGuessArr] = 
         useState(Array.from({ length: wordLength }, (ele) => ''));
 
@@ -55,9 +55,7 @@ function Row(props) {
             }
         })
 
-        if (!Object.keys(missingLetters).length) {
-            // TODO - "Congrats!" event
-        } else {
+        if (Object.keys(missingLetters).length) {
             colors.forEach((color, i) => {
                 if (color === "gray" && missingLetters[localGuessArr[i]]) {
                     missingLetters[localGuessArr[i]]--;
@@ -75,7 +73,6 @@ function Row(props) {
 
     return (<div className="guess-background">
         {inputs}
-        {guess}
     </div>);
 }
 
