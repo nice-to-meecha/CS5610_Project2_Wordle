@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import Congrats from "./Congrats";
+import Congrats from "./EndGame";
 import { gameContext } from "./GameContext";
 import Guess from "./Row";
 import "../css/Board.css";
@@ -36,7 +36,6 @@ function Board(props) {
 
     return(<div className="game-board">
         {guessInputs}
-        {gameWon && <Congrats />}
     </div>)
 }
 

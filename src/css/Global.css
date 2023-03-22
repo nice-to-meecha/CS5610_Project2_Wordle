@@ -1,3 +1,58 @@
 * {
     font-family: 'Merriweather', serif;
 }
+
+:root {
+    --navbar-height: 50px;
+}
+
+.navbar {
+    /* height: var(--navbar-height); */
+    /* height: fit-content; */
+    /* position: absolute;
+    top: 0%;
+    left: 0%; */
+    width: 100%;
+    display: grid;
+    /* align-items: center; */
+    grid-template-columns: 1fr 2fr 0.75fr 0.25fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "rules game-title normal-game hard-game";
+    align-items: center;
+}
+
+/* .body {
+    margin-top: var(--navbar-height);
+} */
+
+.navbar-button {
+    all: unset;
+    font-size: 3vh;
+    cursor: pointer;
+}
+
+.game-title {
+    grid-area: game-title;
+    font-size: 10vh;
+    /* flex-grow: 4; */ 
+    text-align: center;
+    /* text-decoration: none; */
+}
+
+.rules {
+    grid-area: rules;
+    /* flex-grow: 2; */
+}
+
+.normal-game {
+    grid-area: normal-game;
+    text-align: right;
+    /* flex-grow: 1; */
+}
+
+.hard-game {
+    grid-area: hard-game;
+    text-align: right;
+    margin-left: 10px;
+    /* flex-grow: 1; */
+}

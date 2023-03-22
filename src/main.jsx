@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 // import App from "./App";
 // import "./index.css";
+import Layout from "./pages/Layout";
 import Welcome from "./pages/Welcome";
 import Rules from "./pages/Rules";
 import Game from "./pages/Game";
@@ -17,7 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Routes>
           <Route
             path='/'
-            element={<Outlet />}
+            element={<Layout />}
           >
             <Route
               index

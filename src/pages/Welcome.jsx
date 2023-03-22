@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom';
 
 function Welcome() {
     return (<div>
-        <h1>Wordle</h1>
+        <h1>WORDLE</h1>
         <div>
             <Link to='/rules'>Rules</Link>
         </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import Board from "./Board";
-import Congrats from "./Congrats";
+import EndGame from "./EndGame";
 import { gameContext } from "./GameContext";
 import "../css/Game.css";
 
@@ -43,6 +43,7 @@ function Game(props) {
     const { numGuesses, wordList, wordLength } = globalValues.difficultyValues[difficulty];
     const [ attempts, setAttempts ] = useState(0);
     const [ boardKey, setBoardKey ] = useState(true);
+    const [ endGame, setEndGame ] = useState(false);
     
     useEffect(() => {
         selectWord();
@@ -55,6 +56,7 @@ function Game(props) {
                 const words = data.split("\n").map(word => word.trim());
                 const i = Math.round(Math.random() * (words.length - 1));
                 setTargetWord(words[i].toUpperCase());
+                // console.log(words[i].toUpperCase());
             });
     }
 
@@ -77,23 +79,17 @@ function Game(props) {
         setBoardKey(!boardKey);
         setGameWon(false);
     }
-     
+
+    useEffect(() => {
+        if (gameWon || attempts >= numGuesses) {
+            setEndGame(true);
+        }
+    }, [gameWon, attempts])
+
     return (<div>
-        <h1>This is the {difficulty} game page!</h1>
+        {endGame && <EndGame gameWon={gameWon} />}
         <div>Please select a {wordLength}-letter word:</div>
-        <h4>The word is {targetWord}</h4>
         <div>Remaining attempts: {numGuesses - attempts}</div>
-        <button
-            onClick={checkAttempt}
-            disabled={gameWon || attempts >= numGuesses }
-        >
-            Submit
-        </button>
-        <button
-            onClick={reset}
-        >
-            Reset
-        </button>
         <div className="board-container">
             <Board
                 attempts={attempts}
@@ -102,6 +98,17 @@ function Game(props) {
                 key={boardKey}
             />
         </div>
+        <button
+            onClick={checkAttempt}
+            disabled={endGame}
+        >
+            Submit
+        </button>
+        <button
+            onClick={reset}
+        >
+            Reset
+        </button>
     </div>);
 }
 
