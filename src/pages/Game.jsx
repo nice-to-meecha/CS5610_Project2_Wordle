@@ -44,20 +44,30 @@ function Game(props) {
     const [ attempts, setAttempts ] = useState(0);
     const [ boardKey, setBoardKey ] = useState(true);
     const [ endGame, setEndGame ] = useState(false);
+    const [ wordSet, setWordSet ] = useState(new Set());
     
     useEffect(() => {
-        selectWord();
-    }, [])
+        async function makeWordSet() {
+            fetch(wordList)
+                .then(response => response.text())
+                .then(data => {
+                    const newWordSet = new Set(data.split("\n").map(word => word.trim().toUpperCase()))
+                    setWordSet(newWordSet);
+                    selectWord(newWordSet);
+                });
+        }
+        
+        makeWordSet();
+    }, []);
 
-    async function selectWord() {
-        fetch(wordList)
-            .then(response => response.text())
-            .then(data => {
-                const words = data.split("\n").map(word => word.trim());
-                const i = Math.round(Math.random() * (words.length - 1));
-                setTargetWord(words[i].toUpperCase());
-                // console.log(words[i].toUpperCase());
-            });
+    function selectWord(words = new Set()) {
+        let wordCollection = words;
+        if (!wordCollection.size) {
+            wordCollection = wordSet;
+        }
+        const i = Math.round(Math.random() * (wordCollection.size - 1));
+        setTargetWord(Array.from(wordCollection)[i]?.toUpperCase() || "");
+        // console.log(words[i].toUpperCase());
     }
 
     function reset() {
@@ -79,19 +89,32 @@ function Game(props) {
             const { key } = event;
             if (key !== "Enter" || endGame) {
                 console.log("No attempt");
-                return;
-            }
 
-            if (attempts < numGuesses && guess.length === wordLength) {
+            } else if (guess.length !== wordLength) {
+                alert(`Try a ${guess.length < wordLength ? "longer" : "shorter"} word!`);
+
+            } else if (!wordSet.has(guess)) {
+                alert("Not in the dictionary");
+
+            } else {
                 if (guess === targetWord) {
                     setGameWon(true);
                 }
                 setAttempts(attempts + 1);
-    
-            } else {
-                alert(`Try a ${guess.length < wordLength ? "longer" : "shorter"} word!`);
-    
             }
+
+            // if (attempts < numGuesses && guess.length === wordLength) {
+            //     if (!wordSet.has(guess)) {
+            //         alert("Not in the dictionary");
+
+            //     } else {
+            //         if (guess === targetWord) {
+            //             setGameWon(true);
+            //         }
+            //         setAttempts(attempts + 1);
+            //     }
+    
+            // }
         }
         window.addEventListener("keydown", checkAttempt);
         return () => {
@@ -117,7 +140,6 @@ function Game(props) {
         >
             Reset
         </button>
-        {guess}
     </div>);
 }
 

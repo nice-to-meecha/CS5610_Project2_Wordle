@@ -36,3 +36,5 @@ A recreation of Wordle -- no daily limits!
     - https://react.dev/learn/preserving-and-resetting-state
 - Removing native link CSS properties
     - https://stackoverflow.com/questions/8919682/remove-all-styling-formatting-from-hyperlinks
+- Word list origin
+    - https://github.com/dwyl/english-words
