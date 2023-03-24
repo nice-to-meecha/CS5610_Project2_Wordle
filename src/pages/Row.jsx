@@ -2,77 +2,106 @@ import React, { useState, useContext, useEffect } from "react";
 import { gameContext } from "./GameContext";
 import Letter from "./Letter";
 import "../css/Letter.css";
+import TypedLetter from "./TypedLetter";
+
+const MAX_TYPED_WORD_LENGTH = 10;
 
 function Row(props) {
-    const { active, wordLength } = props;
-    const { guess, setGuess, targetWord, setGameWon } = useContext(gameContext);
-    const [localGuessArr, setLocalGuessArr] = 
-        useState(Array.from({ length: wordLength }, (ele) => ''));
+    const { setGuess } = useContext(gameContext);
+    const [typedInputs, setTypedInputs] = useState([]);
 
-    function createWordInputs(wordLength) {
-        const inputs = [];
-        const colors = active
-            ? Array.from({ length: wordLength }, (_) => "white")
-            : colorGuess();
+    // function createWordInputs(wordLength) {
+    //     const inputs = [];
+    //     const colors = active
+    //         ? Array.from({ length: wordLength }, (_) => "white")
+    //         : colorGuess();
 
-        for (let i = 0; i < wordLength; i++) {
-            inputs.push(
-            <Letter
-                changeEvent={autoAdvance}
-                key={i}
-                index={i}
-                color={colors[i]}
-            />)
-        }
+    //     for (let i = 0; i < wordLength; i++) {
+    //         inputs.push(
+    //         <Letter
+    //             changeEvent={autoAdvance}
+    //             key={i}
+    //             index={i}
+    //             color={colors[i]}
+    //         />)
+    //     }
         
-        return inputs;
-    }
+    //     return inputs;
+    // }
 
-    function autoAdvance(event) {
-        event.target.value = (event.target.value || "").toUpperCase();
-        const parentLetter = event.target.parentElement;
-        if (!event.target.value && parentLetter.previousElementSibling) {
-            parentLetter.previousElementSibling.firstElementChild.focus();
-        } else if ((event.target.value && parentLetter.nextElementSibling)) {
-            parentLetter.nextElementSibling.firstElementChild.focus();
-        }
+    // function autoAdvance(event) {
+    //     event.target.value = (event.target.value || "").toUpperCase();
+    //     const parentLetter = event.target.parentElement;
+    //     if (!event.target.value && parentLetter.previousElementSibling) {
+    //         parentLetter.previousElementSibling.firstElementChild.focus();
+    //     } else if ((event.target.value && parentLetter.nextElementSibling)) {
+    //         parentLetter.nextElementSibling.firstElementChild.focus();
+    //     }
 
-        const inputIndex = event.target.id.match(/\d$/)[0];
-        localGuessArr[inputIndex] = event.target.value;
-        setLocalGuessArr([...localGuessArr]);
-        setGuess(localGuessArr.join(''));
-    }
+    //     const inputIndex = event.target.id.match(/\d$/)[0];
+    //     localGuessArr[inputIndex] = event.target.value;
+    //     setLocalGuessArr([...localGuessArr]);
+    //     setGuess(localGuessArr.join(''));
+    // }
 
-    function colorGuess() {
-        // Determine correct and missing letters
-        const colors = Array.from({ length: wordLength }, (_) => "gray");
-        const missingLetters = {};
-        localGuessArr.forEach((letter, i) => {
-            if (letter === targetWord[i]) {
-                colors[i] = "green"
-            } else {
-                missingLetters[targetWord[i]] = (missingLetters[targetWord[i]] || 0) + 1;
+    // const inputs = createWordInputs(wordLength);
+
+    function addLetter(letter) {
+        // Arrow function grabs state's current value
+        // Otherwise, won't work with window event
+        setTypedInputs(typedInputs => {
+            let newTypedInputs = [...typedInputs];
+            if (typedInputs.length < MAX_TYPED_WORD_LENGTH) {
+                newTypedInputs.push(
+                    (<TypedLetter
+                        letter={letter}
+                        color="white"
+                        key={typedInputs.length}
+                    />),
+                );
             }
-        })
 
-        if (Object.keys(missingLetters).length) {
-            colors.forEach((color, i) => {
-                if (color === "gray" && missingLetters[localGuessArr[i]]) {
-                    missingLetters[localGuessArr[i]]--;
-                    colors[i] = "yellow";
-                }
-            });
-        }
+            return newTypedInputs;
+        });
 
-        return colors;
+        setGuess(guess => {
+            let newGuess = guess;
+            if (guess.length < MAX_TYPED_WORD_LENGTH) {
+                newGuess += letter;
+            }
+            return newGuess;
+        });
     }
 
+    function deleteLetter() {
+        setTypedInputs(typedInputs => typedInputs.slice(0, -1));
+        setGuess(guess => guess.slice(0, -1));
+    }
 
-    const inputs = createWordInputs(wordLength);
+    function captureLetter(event) {
+        const { key } = event;
+        if (/^[A-Za-z]$/.test(key)) {
+            addLetter(key.toUpperCase());
 
+        } else if (key === "Backspace") {
+            deleteLetter();
+        }
+    }
 
-    return (<div className="guess-background">
-        {inputs}
+    useEffect(() => {
+        setGuess('');
+        window.addEventListener("keydown", captureLetter);
+
+        return () => {
+            window.removeEventListener("keydown", captureLetter);
+        };
+    }, []);
+
+    return (<div
+        className="guess-background"
+    >
+        {/* {inputs} */}
+        {typedInputs}
     </div>);
 }
 

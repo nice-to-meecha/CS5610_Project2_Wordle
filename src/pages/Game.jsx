@@ -60,19 +60,6 @@ function Game(props) {
             });
     }
 
-    function checkAttempt() {
-        if (attempts < numGuesses && guess.length === wordLength) {
-            if (guess === targetWord) {
-                setGameWon(true);
-            }
-            setAttempts(attempts + 1);
-
-        } else {
-            alert(`Try a ${guess.length < wordLength ? "longer" : "shorter"} word!`);
-
-        }
-    }
-
     function reset() {
         selectWord();
         setAttempts(0);
@@ -85,7 +72,32 @@ function Game(props) {
         if (gameWon || attempts >= numGuesses) {
             setEndGame(true);
         }
-    }, [gameWon, attempts])
+    }, [gameWon, attempts]);
+
+    useEffect(() => {
+        function checkAttempt(event) {
+            const { key } = event;
+            if (key !== "Enter" || endGame) {
+                console.log("No attempt");
+                return;
+            }
+
+            if (attempts < numGuesses && guess.length === wordLength) {
+                if (guess === targetWord) {
+                    setGameWon(true);
+                }
+                setAttempts(attempts + 1);
+    
+            } else {
+                alert(`Try a ${guess.length < wordLength ? "longer" : "shorter"} word!`);
+    
+            }
+        }
+        window.addEventListener("keydown", checkAttempt);
+        return () => {
+            window.removeEventListener("keydown", checkAttempt);
+        }
+    }, [attempts, guess, targetWord, endGame, gameWon]);
 
     return (<div>
         {endGame && <EndGame gameWon={gameWon} />}
@@ -100,16 +112,12 @@ function Game(props) {
             />
         </div>
         <button
-            onClick={checkAttempt}
-            disabled={endGame}
-        >
-            Submit
-        </button>
-        <button
             onClick={reset}
+            hidden={!endGame}
         >
             Reset
         </button>
+        {guess}
     </div>);
 }
 
