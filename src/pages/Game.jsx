@@ -78,6 +78,7 @@ function Game(props) {
         setAttempts(0);
         setBoardKey(!boardKey);
         setGameWon(false);
+        setEndGame(false);
     }
 
     useEffect(() => {
