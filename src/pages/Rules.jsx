@@ -1,6 +1,7 @@
 import React from "react";
 import TypedLetter from "./TypedLetter";
 import "../css/Letter.css";
+import "../css/Rules.css";
 
 export default function Rules() {
     function colorLetters(word, colorLocations) {
@@ -16,9 +17,9 @@ export default function Rules() {
             {coloredLetters}
         </div>
     }
-    return (<div>
+    return (<div className="content">
         <h1>Rules</h1>
-        <ul>
+        <ul className="rules-container">
             <li>Try guessing the secret word, in the allotted number of tries:</li>
                 <ul>
                     <li>

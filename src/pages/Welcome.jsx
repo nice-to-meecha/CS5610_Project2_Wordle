@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import "../css/Welcome.css";
 
 /*
     When users enter your app, they should see a welcome page that contains
@@ -20,16 +21,13 @@ import { Link } from 'react-router-dom';
 */
 
 function Welcome() {
-    return (<div>
-        <h1>WORDLE</h1>
+    return (<div className="welcome">
         <div>
-            <Link to='/rules'>Rules</Link>
+            <Link to='/rules' className="link">Rules</Link>
         </div>
-        <div>
-            Play:
-                <div><Link to='/game/normal'>Normal</Link></div>
-                <div><Link to='/game/hard'>Hard</Link></div>
-        </div>
+        <div>Play:</div>
+        <div><Link to='/game/normal' className="link">Normal</Link></div>
+        <div><Link to='/game/hard' className="link">Hard</Link></div>
     </div>);
 }
 

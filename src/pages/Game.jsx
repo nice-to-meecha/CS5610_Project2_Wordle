@@ -122,7 +122,7 @@ function Game(props) {
         }
     }, [attempts, guess, targetWord, endGame, gameWon]);
 
-    return (<div>
+    return (<div className="content">
         {endGame && <EndGame gameWon={gameWon} />}
         <div>Please select a {wordLength}-letter word:</div>
         <div>Remaining attempts: {numGuesses - attempts}</div>

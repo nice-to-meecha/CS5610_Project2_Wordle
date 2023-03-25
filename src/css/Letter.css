@@ -5,6 +5,8 @@
     width: 10vh;
     height: 10vh;
     text-align: center;
+    animation: 0.5s appear;
+    font-family: 'Merriweather', serif;
 }
 
 .green-letter-box {
@@ -23,4 +25,11 @@
     position: relative;
     display: flex;
     column-gap: 10px;
+    justify-content: center;
+    width: 100vw;
+}
+
+@keyframes appear {
+    0% { opacity: 0; }
+    100% { opacity: 100; }
 }

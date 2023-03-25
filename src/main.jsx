@@ -30,11 +30,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             />
             <Route
               path='game/normal'
-              element={<Game difficulty='normal'/>}
+              element={<Game difficulty='normal' />}
             />
             <Route
               path='game/hard'
-              element={<Game difficulty='hard'/>}
+              element={<Game difficulty='hard' />}
             />
             <Route
               path='*'

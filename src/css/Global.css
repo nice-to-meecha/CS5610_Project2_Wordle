@@ -1,9 +1,5 @@
-* {
-    font-family: 'Merriweather', serif;
-}
-
 :root {
-    --navbar-height: 50px;
+    --navbar-height: 100px;
 }
 
 .navbar {
@@ -12,13 +8,44 @@
     /* position: absolute;
     top: 0%;
     left: 0%; */
-    width: 100%;
+    margin: 0px 8px;
+    width: calc(100% - 16px);
+    height: 10vh;
     display: grid;
     /* align-items: center; */
     grid-template-columns: 1fr 2fr 0.75fr 0.25fr;
     grid-template-rows: 1fr;
-    grid-template-areas: "rules game-title normal-game hard-game";
+    grid-template-areas: "rules game-title-container normal-game hard-game";
     align-items: center;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    background-color: white;
+    font-family: 'Merriweather', serif;
+}
+
+.content, .welcome {
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    width: calc(100% - 16px);
+    /* height: 100vh; */
+}
+
+.content {
+    align-items: center;
+    margin: 15vh auto 0vh auto;
+    
+    font-family: 'Montserrat', sans-serif;
+}
+
+.content h1 {
+    font-family: 'Merriweather', serif;
+}
+
+.welcome {
+    align-items:flex-end;
+    margin-top: 15vh;
 }
 
 /* .body {
@@ -27,17 +54,55 @@
 
 .navbar-button {
     all: unset;
-    font-size: 3vh;
+    font-size: 2vw;
     cursor: pointer;
 }
 
-.game-title {
-    grid-area: game-title;
-    font-size: 10vh;
+.game-title-container {
+    grid-area: game-title-container;
+    display: flex;
+    justify-content: center;
     /* flex-grow: 4; */ 
     text-align: center;
+    overflow: hidden;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0);
     /* text-decoration: none; */
 }
+
+.game-title {
+    font-size: 5vw;
+    text-align: center;
+    overflow: hidden;
+    width: fit-content;
+    border: 1px solid rgba(255, 255, 255, 0);
+    /* text-decoration: none; */
+}
+
+/* .shifting-letters, .bigW {
+    display: inline-block;
+    transform-origin: 0% 50%;
+    transition: 1s;
+    border: none;
+    width: fit-content;
+}
+
+.shifting-letters {
+    overflow: hidden;
+}
+
+.game-title:hover .shifting-letters {
+    translate: -10vw;
+    opacity: 0%;
+}
+
+.game-title:hover .bigW {
+    position: absolute;
+    z-index: 4;
+    color: orange;
+    animation: 3s grow 1.05s;
+    animation-fill-mode: forwards;
+} */
 
 .rules {
     grid-area: rules;
@@ -55,4 +120,22 @@
     text-align: right;
     margin-left: 10px;
     /* flex-grow: 1; */
+}
+
+@keyframes grow {
+    0% {
+        transition: 0%;
+        font-size: 11vw;
+    }
+    25% {
+        left: 50%;
+        translate: -50%;
+    }
+    50% {
+    }
+    100% {
+        left: 50%;
+        translate: -50%;
+        font-size: 11vw;
+    }
 }

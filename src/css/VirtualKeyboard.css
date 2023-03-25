@@ -1,0 +1,13 @@
+.virtual-keyboard {
+    position: fixed;
+    bottom: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.virtual-keyboard-row {
+    display: flex;
+    justify-content: center;
+    column-gap: 1%;
+}

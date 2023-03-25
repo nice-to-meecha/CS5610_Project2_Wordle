@@ -1,0 +1,10 @@
+.welcome {
+    font-size: 20vw;
+    color: gray;
+    width: 100%;
+}
+
+.link {
+    text-decoration: none;
+    color: rgb(68, 62, 62);
+}

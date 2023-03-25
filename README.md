@@ -38,3 +38,7 @@ A recreation of Wordle -- no daily limits!
     - https://stackoverflow.com/questions/8919682/remove-all-styling-formatting-from-hyperlinks
 - Word list origin
     - https://github.com/dwyl/english-words
+- Reading from file
+    - https://www.tutorialspoint.com/how-to-read-and-write-a-file-using-javascript
+- Window event handling with state
+    - https://stackoverflow.com/questions/53845595/wrong-react-hooks-behaviour-with-event-listener

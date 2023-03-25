@@ -12,12 +12,12 @@ export default function NavBar(props) {
                 Rules
             </Link>
         </div>
-        <div className="game-title">
+        <div className="game-title-container">
             <Link
                 className="navbar-button game-title"
                 to="/"
             >
-                WORDLE
+                <span className="bigW">W</span><span className="shifting-letters">ORDLE</span>
             </Link>
         </div>
         <div className="normal-game">
