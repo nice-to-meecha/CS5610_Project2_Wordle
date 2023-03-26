@@ -23,11 +23,26 @@ import "../css/Welcome.css";
 function Welcome() {
     return (<div className="welcome">
         <div className="game-link-container">
-            <Link to='/game/normal' className="link normal-background game-link"><div className="link-text">Normal</div></Link>
-            <Link to='/game/hard' className="link hard-background game-link"><div className="link-text">Hard</div></Link>
+            <Link
+                to='/game/normal'
+                className="link normal-background game-link"
+            >
+                <div className="link-text">Normal</div>
+            </Link>
+            <Link
+                to='/game/hard'
+                className="link hard-background game-link"
+            >
+                <div className="link-text">Hard</div>
+            </Link>
         </div>
         <div className="welcome-rules">
-            <Link to='/rules' className="link rules-background"><div className="link-text">Rules</div></Link>
+            <Link
+                to='/rules'
+                className="link rules-background"
+            >
+                <div className="link-text">Rules</div>
+            </Link>
         </div>
     </div>);
 }

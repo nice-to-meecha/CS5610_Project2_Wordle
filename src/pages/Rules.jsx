@@ -18,7 +18,7 @@ export default function Rules() {
         </div>
     }
     return (<div className="content">
-        <h1>Rules</h1>
+        <h1>RULES</h1>
         <ul className="rules-container">
             <li>Try guessing the secret word, in the allotted number of tries:</li>
                 <ul>
@@ -33,9 +33,9 @@ export default function Rules() {
                 </ul>
             <li>
                 With each guess, the background color of the letters will change
-                to corral you to the correct word:
+                to corral you to the correct word.
                 <br />
-                Say the correct word is <strong>REGRET</strong> and you
+                If the correct word is <strong>REGRET</strong> and you
                 guess <strong>CARROT</strong>, output will look like this:
             </li>
         </ul>

@@ -1,21 +1,30 @@
 import React from "react";
+import { AiOutlineEnter } from "react-icons/ai"
+import { HiOutlineBackspace } from "react-icons/hi";
 import "../css/VirtualKeyboard.css";
 
 export default function VirtualKeyboard(props) {
-    const row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
-    const row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
-    const row3 = ["Enter", 'Z', 'X', 'C', 'V', 'B', 'N', 'M', "Backspace"];
+    const row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', "Backspace"];
+    const row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', "Enter"];
+    const row3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M'];
 
     function createRow(codes) {
-        return codes.map((code, i) =>
-            (<button
+        return codes.map((code, i) => {
+            let representation = code;
+            if (representation === "Backspace") {
+                representation = (<HiOutlineBackspace />);
+            } else if (representation === "Enter") {
+                representation = (<AiOutlineEnter />);
+            }
+
+            return (<button
                 className="key"
                 key={i}
                 onClick={(event) => dispatchKeyEvent(code)}
             >
-                {code}
+                {representation}
             </button>)
-        );
+        });
     }
 
     function createKeyboard() {

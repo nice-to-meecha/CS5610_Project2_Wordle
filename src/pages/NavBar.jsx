@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { IoIosHelpCircleOutline } from "react-icons/io";
 
 export default function NavBar(props) {
     return (<div className="navbar">
@@ -9,7 +10,7 @@ export default function NavBar(props) {
                 className="navbar-button"
                 to="/rules"
             >
-                Rules
+                <IoIosHelpCircleOutline className="rules-icon" />
             </Link>
         </div>
         <div className="game-title-container">
@@ -17,7 +18,8 @@ export default function NavBar(props) {
                 className="navbar-button game-title"
                 to="/"
             >
-                <span className="bigW">W</span><span className="shifting-letters">ORDLE</span>
+                <span className="wordle-word">WORD</span>
+                <span className="shifting-letters">LE</span>
             </Link>
         </div>
         <div className="normal-game">
@@ -25,7 +27,7 @@ export default function NavBar(props) {
                 className="navbar-button"
                 to="/game/normal"
             >
-                Normal
+                <div className="normal-text">Normal</div>
             </Link>
         </div>
         <div className="hard-game">
@@ -33,7 +35,7 @@ export default function NavBar(props) {
                 className="navbar-button"
                 to="/game/hard"
             >
-                Hard
+                <div className="hard-text">Hard</div>
             </Link>
         </div>
         {/* </nav> */}

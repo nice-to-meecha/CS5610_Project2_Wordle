@@ -1,3 +1,8 @@
+:root {
+    --letter-box-size: 3.5vw;
+    --virtual-key-size: 3vw;
+}
+
 .navbar {
     margin: 0px 8px;
     width: calc(100% - 16px);
@@ -23,20 +28,9 @@
     /* height: 100vh; */
 }
 
-.content {
+.content, .welcome {
     align-items: center;
     margin: 10vh auto 0vh auto;
-    
-    font-family: 'Montserrat', sans-serif;
-}
-
-.content h1 {
-    font-family: 'Merriweather', serif;
-}
-
-.welcome {
-    align-items: flex-end;
-    margin-top: 10vh;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -50,12 +44,10 @@
     grid-area: game-title-container;
     display: flex;
     justify-content: center;
-    /* flex-grow: 4; */ 
     text-align: center;
     overflow: hidden;
     width: 100%;
     border: 1px solid rgba(255, 255, 255, 0);
-    /* text-decoration: none; */
 }
 
 .game-title {
@@ -64,10 +56,9 @@
     overflow: hidden;
     width: fit-content;
     border: 1px solid rgba(255, 255, 255, 0);
-    /* text-decoration: none; */
 }
 
-/* .shifting-letters, .bigW {
+/* .shifting-letters, .wordle-word {
     display: inline-block;
     transform-origin: 0% 50%;
     transition: 1s;
@@ -84,7 +75,7 @@
     opacity: 0%;
 }
 
-.game-title:hover .bigW {
+.game-title:hover .wordle-word {
     position: absolute;
     z-index: 4;
     color: orange;
@@ -94,23 +85,64 @@
 
 .rules {
     grid-area: rules;
-    /* flex-grow: 2; */
 }
 
 .normal-game {
     grid-area: normal-game;
     text-align: right;
-    /* flex-grow: 1; */
+}
+
+.normal-text, .hard-text {
+    width: fit-content;
+    overflow: hidden;
+    position: relative;
+}
+
+.normal-text::before, .normal-text::after,
+.hard-text::before, .hard-text::after {
+    content: '';
+    color: black;
+    background-color: black;
+    width: 100%;
+    position: absolute;
+    height: 2px;
+    transition: 1s;
+}
+
+.normal-text::before, .hard-text::before {
+    top: 0%;
+    right: -100%;
+}
+
+.normal-text::after, .hard-text::after {
+    bottom: 0%;
+    right: 100%;
+}
+
+.normal-text:hover::before, .normal-text:hover::after,
+.hard-text:hover::before, .hard-text:hover::after {
+    right: 0%;
 }
 
 .hard-game {
     grid-area: hard-game;
     text-align: right;
     margin-left: 10px;
-    /* flex-grow: 1; */
 }
 
-@keyframes grow {
+.rules-icon {
+    font-size: 3vw;
+}
+
+.rules-icon path:last-of-type {
+    transform-origin: 50% 50%;
+}
+
+.rules-icon:hover path:last-of-type {
+    animation: 0.5s shake;
+}
+
+/* @keyframes grow {
     0% {
         transition: 0%;
         font-size: 11vw;
@@ -125,5 +157,132 @@
         left: 50%;
         translate: -50%;
         font-size: 11vw;
+    }
+} */
+
+@keyframes shake {
+    25% {
+        transform: rotate(12.5deg);
+    }
+    50% {
+        transform: rotate(-12.5deg);
+    }
+    75% {
+        transform: rotate(12.5deg);
+    }
+}
+
+.wordle-word {
+    display: inline-block;
+    /* position: relative;
+    height: 5vh;
+    width: 5vh;
+    backface-visibility: hidden;
+    perspective: 100px;
+    transform-style: preserve-3d;
+    transform-origin: center; */
+    transition: 1s;
+}
+
+/* .front-side, .back-side {
+    display: inline-block;
+}
+
+.front-side, .back-side {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    backface-visibility: hidden;
+}
+
+.front-side {
+    background-color: white;
+}
+
+.back-side {
+    background-color: green;
+    transform: rotateX(180deg);
+} */
+
+.game-title:hover .wordle-word {
+    /* transform: rotateX(-180deg); */
+    color: green;
+}
+
+/* .game-title:hover .wordle-word {
+    animation: flip 0.5s;
+    animation-fill-mode: forwards;
+} */
+
+/* @keyframes flip {
+    0% {
+        perspective: 100px;
+    }
+
+    50% {
+        perspective: 100px;
+        transform: rotateX(90deg);
+    }
+
+    100% {
+        perspective: 100px;
+        transform: rotateX(180deg);
+    }
+} */
+
+@media (max-width: 992px) {
+    .navbar-button {
+        font-size: 2.5vw;
+    }
+
+    .rules-icon {
+        font-size: 3.5vw;
+    }
+
+    .game-title {
+        font-size: 4vw;
+    }
+
+    :root {
+        --letter-box-size: 4.25vw;
+        --virtual-key-size: 4vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-button {
+        font-size: 2.75vw;
+    }
+
+    .rules-icon {
+        font-size: 4vw;
+    }
+
+    .game-title {
+        font-size: 3.5vw;
+        --virtual-key-size: 4.25vw;
+    }
+
+    :root {
+        --letter-box-size: 5vw;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-button {
+        font-size: 3.75vw;
+    }
+
+    .game-title {
+        font-size: 4vw;
+    }
+
+    .rules-icon {
+        font-size: 5.5vw;
+    }
+
+    :root {
+        --letter-box-size: 5vh;
+        --virtual-key-size: 4.25vh;
     }
 }

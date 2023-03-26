@@ -50,3 +50,13 @@ A recreation of Wordle -- no daily limits!
     - https://coderfiles.dev/blog/react-show-hide-after-few-seconds/
 - Using CSS transform property for <span> elements
     - https://stackoverflow.com/questions/24961795/how-can-i-use-css3-transform-on-a-span
+- Line-spacing
+    - https://www.uvm.edu/~bnelson/computer/css/changethespacingbetweenlines.html#:~:text=Use%20the%20line%2Dheight%20property,of%20vertical%20space%20between%20lines.
+- Using react-icons
+    - https://www.freecodecamp.org/news/how-to-use-react-icons/
+- How to transform svg path
+    - https://stackoverflow.com/questions/33186431/rotate-svg-path-using-css
+- Using first-of-type CSS selector (applied to last-of-type)
+    - https://developer.mozilla.org/en-US/docs/Web/CSS/:first-of-type
+- Flipping animation
+    - https://www.tutorialspoint.com/online_html_editor.php

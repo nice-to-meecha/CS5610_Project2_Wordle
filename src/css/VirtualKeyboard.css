@@ -1,6 +1,6 @@
 .virtual-keyboard {
-    position: fixed;
-    bottom: 3vh;
+    /* position: fixed; */
+    /* bottom: 3vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,7 +14,7 @@
 }
 
 .key {
-    font-size: 1.5vw;
-    width: 3vw;
-    height: 3vw;
+    font-size: calc(var(--virtual-key-size) / 2);
+    width: var(--virtual-key-size);
+    height: var(--virtual-key-size);
 }
