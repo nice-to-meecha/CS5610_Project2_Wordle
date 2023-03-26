@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import Board from "./Board";
 import EndGame from "./EndGame";
+import VirtualKeyboard from "./VirtualKeyboard";
 import { gameContext } from "./GameContext";
 import "../css/Game.css";
 import PopUp from "./PopUp";
@@ -58,7 +59,7 @@ function Game(props) {
                 selectWord(newWordSet);
             });
     }
-    
+
     useEffect(() => {
         makeWordSet();
     }, []);
@@ -149,6 +150,7 @@ function Game(props) {
         >
             Reset
         </button>
+        <VirtualKeyboard />
     </div>);
 }
 

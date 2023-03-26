@@ -1,8 +1,8 @@
 .letter-box {
     border: 2px solid gray;
-    font-size: 8vh;
-    width: 10vh;
-    height: 10vh;
+    font-size: 4vw;
+    width: 5vw;
+    height: 5vw;
     text-align: center;
     animation: 0.5s appear;
     font-family: 'Merriweather', serif;

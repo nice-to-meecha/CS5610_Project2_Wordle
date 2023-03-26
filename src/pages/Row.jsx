@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import { gameContext } from "./GameContext";
-import VirtualKeyboard from "./VirtualKeyboard";
 import "../css/Letter.css";
 import TypedLetter from "./TypedLetter";
 
@@ -99,7 +98,6 @@ function Row(props) {
 
     return (<div className="guess-background">
         {typedInputs}
-        <VirtualKeyboard />
     </div>);
 }
 

@@ -1,16 +1,7 @@
-:root {
-    --navbar-height: 100px;
-}
-
 .navbar {
-    /* height: var(--navbar-height); */
-    /* height: fit-content; */
-    /* position: absolute;
-    top: 0%;
-    left: 0%; */
     margin: 0px 8px;
     width: calc(100% - 16px);
-    height: 10vh;
+    height: 8vh;
     display: grid;
     /* align-items: center; */
     grid-template-columns: 1fr 2fr 0.75fr 0.25fr;
@@ -34,7 +25,7 @@
 
 .content {
     align-items: center;
-    margin: 15vh auto 0vh auto;
+    margin: 10vh auto 0vh auto;
     
     font-family: 'Montserrat', sans-serif;
 }
@@ -45,13 +36,9 @@
 
 .welcome {
     align-items: flex-end;
-    margin-top: 11vh;
+    margin-top: 10vh;
     font-family: 'Montserrat', sans-serif;
 }
-
-/* .body {
-    margin-top: var(--navbar-height);
-} */
 
 .navbar-button {
     all: unset;
@@ -72,7 +59,7 @@
 }
 
 .game-title {
-    font-size: 5vw;
+    font-size: 4vw;
     text-align: center;
     overflow: hidden;
     width: fit-content;

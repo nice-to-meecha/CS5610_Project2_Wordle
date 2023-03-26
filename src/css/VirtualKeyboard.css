@@ -4,10 +4,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    row-gap: 5px;
 }
 
 .virtual-keyboard-row {
     display: flex;
     justify-content: center;
     column-gap: 1%;
+}
+
+.key {
+    font-size: 1.5vw;
+    width: 3vw;
+    height: 3vw;
 }

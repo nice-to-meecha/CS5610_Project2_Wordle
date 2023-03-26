@@ -9,6 +9,7 @@ export default function VirtualKeyboard(props) {
     function createRow(codes) {
         return codes.map((code, i) =>
             (<button
+                className="key"
                 key={i}
                 onClick={(event) => dispatchKeyEvent(code)}
             >

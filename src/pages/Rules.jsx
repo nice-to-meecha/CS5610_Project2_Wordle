@@ -37,20 +37,20 @@ export default function Rules() {
                 <br />
                 Say the correct word is <strong>REGRET</strong> and you
                 guess <strong>CARROT</strong>, output will look like this:
-                {colorLetters("carrot", ["gray", "gray", "green", "yellow", "gray", "green"])}
-                <ul>
-                    <li>
-                        Green means the letter is in the right spot
-                    </li>
-                    <li>
-                        Yellow means the letter is found in the secret word
-                        but in a different location
-                    </li>
-                    <li>
-                        Gray means the letter is nowhere to be found in the secret word
-                        (aka try something else!)
-                    </li>
-                </ul>
+            </li>
+        </ul>
+            {colorLetters("carrot", ["gray", "gray", "green", "yellow", "gray", "green"])}
+        <ul className="rules-container">
+            <li>
+                Green means the letter is in the right spot
+            </li>
+            <li>
+                Yellow means the letter is found in the secret word
+                but in a different location
+            </li>
+            <li>
+                Gray means the letter is nowhere to be found in the secret word
+                (aka try something else!)
             </li>
         </ul>
     </div>);
