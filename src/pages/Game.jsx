@@ -49,17 +49,17 @@ function Game(props) {
     const [ showWarning, setShowWarning ] = useState(false);
     const [ message, setMessage ] = useState('');
     
+    async function makeWordSet() {
+        fetch(wordList)
+            .then(response => response.text())
+            .then(data => {
+                const newWordSet = new Set(data.split("\n").map(word => word.trim().toUpperCase()))
+                setWordSet(newWordSet);
+                selectWord(newWordSet);
+            });
+    }
+    
     useEffect(() => {
-        async function makeWordSet() {
-            fetch(wordList)
-                .then(response => response.text())
-                .then(data => {
-                    const newWordSet = new Set(data.split("\n").map(word => word.trim().toUpperCase()))
-                    setWordSet(newWordSet);
-                    selectWord(newWordSet);
-                });
-        }
-        
         makeWordSet();
     }, []);
 
@@ -86,6 +86,11 @@ function Game(props) {
             setEndGame(true);
         }
     }, [gameWon, attempts]);
+
+    useEffect(() => {
+        makeWordSet();
+        reset();
+    }, [difficulty]);
 
     async function showWarningPopup() {
         setShowWarning(true);

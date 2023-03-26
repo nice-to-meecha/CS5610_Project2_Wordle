@@ -1,7 +1,6 @@
 .letter-box {
-    border-color: gray;
+    border: 2px solid gray;
     font-size: 8vh;
-    border-style: solid;
     width: 10vh;
     height: 10vh;
     text-align: center;

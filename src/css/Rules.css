@@ -1,5 +1,12 @@
 .rules-container {
     display: flex;
     flex-direction: column;
-    width: 100vw;
+    width: fit-content;
+    line-height: 1.5em;
+}
+
+.rules-container .guess-background {
+    width: fit-content;
+    margin: 1% 0%;
+    line-height: 1.5em;
 }
