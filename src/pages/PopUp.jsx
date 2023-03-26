@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/Popup.css";
+import "../css/PopUp.css";
 
 export default function PopUp(props) {
     const { message, color } = props;
