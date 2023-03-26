@@ -40,5 +40,13 @@ A recreation of Wordle -- no daily limits!
     - https://github.com/dwyl/english-words
 - Reading from file
     - https://www.tutorialspoint.com/how-to-read-and-write-a-file-using-javascript
+- Flexbox
+    - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 - Window event handling with state
     - https://stackoverflow.com/questions/53845595/wrong-react-hooks-behaviour-with-event-listener
+- Creating a synthetic keyboard event
+    - https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/KeyboardEvent
+- Hide elements after short period of time
+    - https://coderfiles.dev/blog/react-show-hide-after-few-seconds/
+- Using CSS transform property for <span> elements
+    - https://stackoverflow.com/questions/24961795/how-can-i-use-css3-transform-on-a-span

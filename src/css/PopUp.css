@@ -1,0 +1,20 @@
+.popup {
+    padding: 2% 5%;
+    border-radius: 10px;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    /* text-align: center; */
+    z-index: 1;
+}
+
+.popup-black {
+    background-color: black;
+    color: white;
+}
+
+.popup-orange {
+    background-color: orange;
+    /* animation: 5s slide; */
+}

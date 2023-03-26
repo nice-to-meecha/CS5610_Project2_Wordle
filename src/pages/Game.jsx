@@ -3,6 +3,7 @@ import Board from "./Board";
 import EndGame from "./EndGame";
 import { gameContext } from "./GameContext";
 import "../css/Game.css";
+import PopUp from "./PopUp";
 
 /*
 
@@ -45,6 +46,8 @@ function Game(props) {
     const [ boardKey, setBoardKey ] = useState(true);
     const [ endGame, setEndGame ] = useState(false);
     const [ wordSet, setWordSet ] = useState(new Set());
+    const [ showWarning, setShowWarning ] = useState(false);
+    const [ message, setMessage ] = useState('');
     
     useEffect(() => {
         async function makeWordSet() {
@@ -84,17 +87,25 @@ function Game(props) {
         }
     }, [gameWon, attempts]);
 
+    async function showWarningPopup() {
+        setShowWarning(true);
+        setTimeout(() => setShowWarning(false), 5000);
+    }
+
     useEffect(() => {
-        function checkAttempt(event) {
+         function checkAttempt(event) {
             const { key } = event;
             if (key !== "Enter" || endGame) {
-                console.log("No attempt");
+                return;
 
             } else if (guess.length !== wordLength) {
-                alert(`Try a ${guess.length < wordLength ? "longer" : "shorter"} word!`);
+                setMessage(`Try a ${guess.length < wordLength ? "longer" : "shorter"} word!`);
+                showWarningPopup();
+                
 
             } else if (!wordSet.has(guess)) {
-                alert("Not in the dictionary");
+                setMessage("Not in the dictionary");
+                showWarningPopup();
 
             } else {
                 if (guess === targetWord) {
@@ -102,20 +113,8 @@ function Game(props) {
                 }
                 setAttempts(attempts + 1);
             }
-
-            // if (attempts < numGuesses && guess.length === wordLength) {
-            //     if (!wordSet.has(guess)) {
-            //         alert("Not in the dictionary");
-
-            //     } else {
-            //         if (guess === targetWord) {
-            //             setGameWon(true);
-            //         }
-            //         setAttempts(attempts + 1);
-            //     }
-    
-            // }
         }
+        
         window.addEventListener("keydown", checkAttempt);
         return () => {
             window.removeEventListener("keydown", checkAttempt);
@@ -123,7 +122,12 @@ function Game(props) {
     }, [attempts, guess, targetWord, endGame, gameWon]);
 
     return (<div className="content">
-        {endGame && <EndGame gameWon={gameWon} />}
+        { endGame
+            ? <EndGame gameWon={gameWon} />
+            : showWarning
+                ? <PopUp message={message} color="orange"/>
+                : <></>
+        }
         <div>Please select a {wordLength}-letter word:</div>
         <div>Remaining attempts: {numGuesses - attempts}</div>
         <div className="board-container">

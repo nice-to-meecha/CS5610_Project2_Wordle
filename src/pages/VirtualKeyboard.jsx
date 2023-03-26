@@ -2,9 +2,9 @@ import React from "react";
 import "../css/VirtualKeyboard.css";
 
 export default function VirtualKeyboard(props) {
-    const row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', "Backspace"];
-    const row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', "Enter"];
-    const row3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+    const row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
+    const row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
+    const row3 = ["Enter", 'Z', 'X', 'C', 'V', 'B', 'N', 'M', "Backspace"];
 
     function createRow(codes) {
         return codes.map((code, i) =>
