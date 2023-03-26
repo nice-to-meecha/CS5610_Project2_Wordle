@@ -1,10 +1,104 @@
 .welcome {
-    font-size: 20vw;
+    /* font-size: 20vw; */
     color: gray;
     width: 100%;
 }
 
 .link {
     text-decoration: none;
-    color: rgb(68, 62, 62);
+    color: black;
+}
+
+.link-text {
+    width: fit-content;
+    /* border: 1px solid white; */
+    font-size: 10vh;
+    /* transition: 0.25s; */
+}
+
+/* .game-link:hover {
+    box-shadow:
+        inset 60px 0 120px #f0f,
+        60px 0 20px #0ff,
+        inset -60px 0 120px #0ff;
+} */
+
+.game-link-container {
+    display: flex;
+    width: 100%;
+    height: 60vh;
+    text-align: center;
+}
+
+.game-link {
+    width: 50%;
+    /* padding: 25% 0%; */
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    /* border-radius: 50%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+}
+
+.game-link-container:hover .normal-background {
+    background-size: 100% 100%;
+}
+
+.game-link-container:hover .link:not(.link:hover) {
+    color: rgba(255, 255, 255, 0);
+}
+
+.game-link-container:hover .link:hover {
+    color: rgba(255, 255, 255);
+}
+
+/* .link:hover {
+    color: rgba(255, 255, 255);
+} */
+
+/* .link:not(.link:hover) {
+    color: black;
+} */
+
+.game-link-container:hover .hard-background {
+    background-size: 100% 100%;
+}
+
+.normal-background {
+    background: linear-gradient(90deg, #EAA88D 0%, #d2523c 100%) no-repeat;
+}
+
+.hard-background {
+    background: linear-gradient(90deg, #d2523c 0%, #7b0202 100%) no-repeat;
+    background-position-y: bottom;
+}
+
+.normal-background, .hard-background {
+    transition: 1s;
+    background-size: 100% 0%;
+}
+
+.welcome-rules {
+    display: flex;
+    width: 100%;
+    height: 24vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.rules-background {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rules-background .link-text {
+    width: 100%;
+    /* height: 100%; */
 }

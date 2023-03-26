@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 612 792" style="enable-background:new 0 0 612 792;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:#FFFFFF;}
+	.st2{fill:#0E171F;stroke:#EC2027;stroke-width:5;stroke-miterlimit:10;}
+	.st3{fill:#0E171F;stroke:#BD202E;stroke-width:5;stroke-miterlimit:10;}
+	.st4{fill:#0E171F;stroke:#EF4137;stroke-width:5;stroke-miterlimit:10;}
+	.st5{fill:#0E171F;stroke:#F15A2B;stroke-width:5;stroke-miterlimit:10;}
+	.st6{fill:#0E171F;stroke:#D8804F;stroke-width:5;stroke-miterlimit:10;}
+</style>
+<g id="Background">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="307.3933" y1="691.3887" x2="305.611" y2="313.5385">
+		<stop  offset="0" style="stop-color:#635F61"/>
+		<stop  offset="0.0584" style="stop-color:#5A5759"/>
+		<stop  offset="0.2253" style="stop-color:#454344"/>
+		<stop  offset="0.4032" style="stop-color:#292829"/>
+		<stop  offset="0.5979" style="stop-color:#0D0D0D"/>
+		<stop  offset="0.8413" style="stop-color:#000000"/>
+	</linearGradient>
+	<rect class="st0" width="612" height="792"/>
+</g>
+<g id="Eyes">
+	<circle class="st1" cx="167.24" cy="165.54" r="54.36"/>
+	<circle class="st1" cx="462.02" cy="165.54" r="54.36"/>
+</g>
+<g id="Mountains">
+	<path class="st2" d="M330.31,94.53l138.53,309.73l138.53,309.72c0,0,0,0.01,0,0.01H330.31H53.26c-0.01,0-0.01-0.01-0.01-0.02
+		l138.53-309.72L330.31,94.53z"/>
+	<path class="st3" d="M228.93,242.33l110.64,235.83l110.64,235.83c0,0,0,0.01,0,0.01H228.93H7.67c-0.01,0-0.01-0.01-0.01-0.01
+		l110.63-235.82L228.93,242.33z"/>
+	<path class="st4" d="M358.86,304.45l107.29,204.78l107.28,204.77c0,0,0,0.01,0,0.01H358.86H144.3c-0.01,0-0.01-0.01-0.01-0.01
+		l107.28-204.76L358.86,304.45z"/>
+	<path class="st5" d="M221.6,404.27l80.51,154.87L382.61,714c0,0,0,0,0,0H221.6h-161c0,0-0.01,0,0-0.01l80.5-154.86L221.6,404.27z"
+		/>
+	<polygon class="st6" points="353.42,525.8 407.72,619.9 462.02,714 462.02,714 353.42,714 244.83,714 244.82,713.99 299.12,619.9 	
+		"/>
+</g>
+</svg>

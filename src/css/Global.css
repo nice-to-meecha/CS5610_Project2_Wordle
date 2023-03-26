@@ -44,8 +44,9 @@
 }
 
 .welcome {
-    align-items:flex-end;
-    margin-top: 15vh;
+    align-items: flex-end;
+    margin-top: 11vh;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* .body {
